@@ -1,0 +1,2 @@
+FastPSPSource(1000, 800, 128, 00:0C:11:00:00:00, 0x110C00010B, 2345,00:0C:21:00:00:00,0x120C00040B,2346) -> PSPPrint() -> ToDevice(eth0_rename);
+

@@ -47,10 +47,8 @@ FromDevice($DEV1) -> Paint(2) -> c0;
 
 	// 7. PSPMacap && 8. Send Queue && 9. ToDevice
 	out0 :: Queue(200) -> ToDevice($DEV0);
-	out1 :: Queue(200) -> ToDevice($DEV1);
 
 	// Dispatcher
-	/*
 	disp1 :: Dispatcher;
 	sche1 :: Scheduler;
 	sche1[0] -> ToDevice($DEV1);
@@ -62,7 +60,6 @@ FromDevice($DEV1) -> Paint(2) -> c0;
 	disp1[5] -> Queue(20) -> BandwidthShaper(65536B/s) -> [5]sche1;
 	disp1[6] -> Queue(20) -> BandwidthShaper(131072B/s) -> [6]sche1;
 	disp1[7] -> Queue(100)  -> [7]sche1;
-	*/
 
 	cp2 :: CheckPaint(1);
 	cp2[0] -> Discard;
@@ -88,7 +85,7 @@ FromDevice($DEV1) -> Paint(2) -> c0;
 	cp1[1] 	-> DecLabelTTL 
 			-> ExchangeLabel 
 			-> EncapEth($MAC0, $DESCMAC1) 
-			-> out1;
+			-> disp1;
 
 	label[2] -> PopLabel -> chpsph;
 
